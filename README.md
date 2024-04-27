@@ -12,15 +12,15 @@ Simple order flow to demo some concepts: ⚡ = 💗💎❤️
 - Outbox Pattern: Avoid dual-writes, no 2PC required using `Kafka`,`Kafka Connect`, `Debezium`
   , `Outbox Event Router`
 
-![1](./image/1.png)
+![1](1.png)
 
 ## Choreography in SAGA Pattern
 
-![2](./image/2.png)
+![2](2.png)
 
 ## Orchestration-based saga
 
-![3](./image/3.png)
+![3](3.png)
 
 ## Prerequisites
 
