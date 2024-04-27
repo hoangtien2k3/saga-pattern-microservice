@@ -4,7 +4,7 @@ spring:
   main:
     web-application-type: reactive
   application:
-    name: gateway-application
+    name: api-gateway
   cloud:
     consul: # Địa chỉ IP hoặc tên miền của máy chủ Consul mà API Gateway
       host: ${CONSUL:localhost}

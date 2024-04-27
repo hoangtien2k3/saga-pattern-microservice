@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.hoangtien2k3</groupId>
-		<artifactId>saga-pattern-microservice</artifactId>
+		<artifactId>saga-pattern-microservice-spring-boot-3</artifactId>
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>api-gateway</artifactId>

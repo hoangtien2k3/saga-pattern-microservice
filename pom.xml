@@ -6,7 +6,6 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<packaging>pom</packaging>
 	<modules>
@@ -16,10 +15,10 @@
 		<module>order-service</module>
 	</modules>
 	<groupId>com.hoangtien2k3</groupId>
-	<artifactId>saga-pattern-microservice</artifactId>
+	<artifactId>saga-pattern-microservice-spring-boot-3</artifactId>
 	<version>1.0.0</version>
-	<name>saga-pattern-microservice</name>
-	<description>Saga pattern microservice spring boot</description>
+	<name>saga-pattern-microservice-spring-boot-3</name>
+	<description>Saga pattern microservice spring boot 3</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.1</spring-cloud.version>
