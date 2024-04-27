@@ -1,0 +1,34 @@
+server:
+  port: 9090
+spring:
+  threads:
+    virtual:
+      enabled: true
+  application:
+    name: order-service
+  jpa:
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+    generate-ddl: true
+  datasource:
+    url: jdbc:postgresql://localhost:5435/postgres
+    username: postgres
+    password: 12042003
+  cloud:
+    consul:
+      host: ${CONSUL_HOST:localhost}
+      port: ${CONSUL_PORT:8500}
+    function:
+      definition: startSaga;reserveCustomerBalanceStage;reserveProductStockStage
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        reserveCustomerBalanceStage-in-0:
+          destination: CUSTOMER.events
+        reserveProductStockStage-in-0:
+          destination: PRODUCT.events

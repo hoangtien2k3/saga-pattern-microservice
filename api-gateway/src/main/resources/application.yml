@@ -1,0 +1,39 @@
+server:
+  port: 8080
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: gateway-application
+  cloud:
+    consul: # Địa chỉ IP hoặc tên miền của máy chủ Consul mà API Gateway
+      host: ${CONSUL:localhost}
+      port: ${CONSUL_PORT:8500}
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true   # Xác định xem các ID của dịch vụ trong Consul có nên chuyển đổi thành chữ thường hay không.
+          enabled: true                 # Bật tính năng phát hiện dịch vụ của Gateway, cho phép API Gateway tìm kiếm các dịch vụ được đăng ký trong Consul.
+      globalcors: # Cấu hình CORS (Cross-Origin Resource Sharing) -->
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"         # Xác định các cấu hình CORS toàn cục cho tất cả các yêu cầu được gửi đến API Gateway. Trong trường hợp này, tất cả các yêu cầu từ bất kỳ nguồn nào (*) đều được cho phép
+            allowedMethods: # chỉ những phương thức được chỉ định (GET, POST, PUT, DELETE, OPTIONS) được phép.
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+      routes: # Xác định các tuyến đường (routes) mà API Gateway sẽ sử dụng để định tuyến yêu cầu đến các dịch vụ phía sau.
+        - id: customer-service
+          uri: lb://customer-service
+          predicates:
+            - Path=/customer-service/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order-service/**
+        - id: inventory-service
+          uri: lb://inventory-service
+          predicates:
+            - Path=/inventory-service/**
